@@ -1,0 +1,208 @@
+/* NEW: Categories page (uses the Products page styles too) */
+
+.categories-form {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.categories-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.categories-form input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #334155;
+  font: inherit;
+  font-weight: 400;
+  outline: none;
+}
+
+.categories-form input:focus {
+  border-color: #3568a8;
+  box-shadow: 0 0 0 3px rgba(53, 104, 168, 0.12);
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.category-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.category-card-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #eef2ff;
+  font-size: 24px;
+}
+
+.category-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-card-body h3 {
+  margin: 0 0 3px;
+  color: #173563;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.category-card-body p {
+  margin: 0;
+  color: #475569;
+  font-size: 12px;
+}
+
+.category-card-body small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.category-card .products-secondary-button {
+  flex-shrink: 0;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .categories-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* NEW: edit / delete */
+.category-card {
+  align-items: flex-start;
+}
+
+.category-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.category-card-actions button {
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.category-card-actions button:hover {
+  background: #f8fafc;
+}
+
+.category-card-actions button.danger {
+  border-color: #fecaca;
+  color: #b91c1c;
+}
+
+.category-edit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.category-edit input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+}
+
+.category-edit label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.category-edit label input {
+  width: 80px;
+}
+
+.category-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.category-edit-actions button {
+  padding: 7px 12px;
+  font-size: 12px;
+}
+
+/* NEW: search and filter bar */
+.categories-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  flex-wrap: wrap;
+}
+
+.categories-toolbar .products-search {
+  flex: 1;
+  min-width: 200px;
+  max-width: 360px;
+}
+
+.categories-toolbar select {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #475569;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.categories-toolbar span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .categories-toolbar .products-search,
+  .categories-toolbar select {
+    width: 100%;
+    max-width: none;
+  }
+}

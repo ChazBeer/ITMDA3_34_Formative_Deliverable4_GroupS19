@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./Backend
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env  # Docker reads the .env file securely without exposing keys in the YAML
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://host.docker.internal:3306/cafeteriadb?useSSL=false&serverTimezone=Africa/Johannesburg
+      - TZ=Africa/Johannesburg
+      - APP_BASE_URL=http://localhost:8080
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: always

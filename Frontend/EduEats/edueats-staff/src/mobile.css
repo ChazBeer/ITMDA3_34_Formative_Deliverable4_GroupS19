@@ -1,0 +1,139 @@
+/* src/mobile.css - phone & small-tablet fixes for the staff app.
+   Loaded after App.css, so these rules only change small screens. */
+
+@media (max-width: 760px) {
+  /* Top bar: logo + account on the first row, page links on the second row */
+  .topbar {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 0;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .brand {
+    order: 1;
+  }
+
+  .topbar-right {
+    order: 2;
+    margin-left: auto;
+    gap: 8px;
+  }
+
+  .topbar-nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;           /* swipe sideways if the links don't fit */
+    scrollbar-width: none;
+    margin: 0;
+  }
+
+  .topbar-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    flex: none;
+    white-space: nowrap;
+  }
+
+  /* Save space: the green "Active terminal" pill and the name are hidden,
+     the avatar letter and Log Out stay visible */
+  .terminal-status,
+  .user-name {
+    display: none;
+  }
+
+  .staff-login {
+    white-space: nowrap;
+  }
+
+  /* Page content uses the full width */
+  .dashboard,
+  .settings-page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  /* Toolbar: search full width, buttons wrap underneath */
+  .toolbar,
+  .toolbar-left,
+  .toolbar-right {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    flex: 1 1 100%;
+  }
+
+  /* Kanban columns stacked one under the other */
+  .kanban-board {
+    grid-template-columns: 1fr;
+  }
+
+  /* List view scrolls sideways instead of squashing */
+  .list-view {
+    overflow-x: auto;
+  }
+
+  .list-header,
+  .list-row {
+    min-width: 640px;
+  }
+}
+
+/* When the red "Offline" pill is showing, keep it visible on phones too */
+@media (max-width: 760px) {
+  .terminal-status.is-offline {
+    display: inline-flex;
+  }
+
+  /* The sound button only shows its bell icon */
+  .sound-toggle span {
+    display: none;
+  }
+}
+
+/* NEW: name in the top bar opens Account Settings */
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 4px 4px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.user-chip:hover,
+.user-chip:focus-visible {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-chip .user-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 15px;
+}
+
+.user-chip .user-name {
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .user-chip {
+    padding: 2px;
+  }
+}

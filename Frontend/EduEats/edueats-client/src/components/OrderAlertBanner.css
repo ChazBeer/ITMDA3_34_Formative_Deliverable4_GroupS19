@@ -1,0 +1,75 @@
+/* src/components/OrderAlertBanner.css */
+
+.order-alert {
+  position: fixed;
+  top: 72px;
+  left: 50%;
+  z-index: 90;
+  box-sizing: border-box;
+  width: min(560px, calc(100% - 24px));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  transform: translateX(-50%);
+  animation: orderAlertIn 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.order-alert.ready {
+  background: #059669;
+  box-shadow: 0 12px 28px rgba(5, 150, 105, 0.35);
+}
+
+.order-alert.cancelled {
+  background: #b91c1c;
+  box-shadow: 0 12px 28px rgba(185, 28, 28, 0.3);
+}
+
+.order-alert-text {
+  flex: 1;
+  line-height: 1.35;
+}
+
+.order-alert-view {
+  flex: none;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.order-alert.ready .order-alert-view {
+  color: #047857;
+}
+
+.order-alert.cancelled .order-alert-view {
+  color: #b91c1c;
+}
+
+.order-alert-close {
+  flex: none;
+  padding: 0 4px;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@keyframes orderAlertIn {
+  from { opacity: 0; transform: translate(-50%, -12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-alert {
+    animation: none;
+  }
+}

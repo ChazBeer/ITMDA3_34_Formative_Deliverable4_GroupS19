@@ -1,0 +1,189 @@
+/* src/components/AccountSettings.css
+   Account Settings page (uses .settings-page / .settings-card from App.css) */
+
+.account-card {
+  margin-bottom: 20px;
+}
+
+.account-card .settings-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.account-subtitle {
+  border-top: 1px solid #e2e8f0;
+}
+
+.account-subtitle span,
+.account-role {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.account-role {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 20px;
+  padding: 20px 24px;
+}
+
+.account-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.account-card label small {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.account-card input:not([type="checkbox"]) {
+  box-sizing: border-box;
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #334155;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.account-card input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.account-save {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.account-save label {
+  flex: 1;
+  max-width: 360px;
+}
+
+.account-save .primary-button {
+  height: 42px;
+}
+
+.account-save .primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+}
+
+.account-row strong {
+  color: #173563;
+  font-size: 14px;
+}
+
+.account-row p {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.account-danger {
+  border-color: #fecaca;
+}
+
+.account-danger .settings-card-title {
+  background: #fef2f2;
+}
+
+.account-danger .settings-card-title h2 {
+  color: #b91c1c;
+}
+
+.account-danger-button {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  background: #fff;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.account-danger-button:hover:not(:disabled) {
+  background: #fef2f2;
+}
+
+.account-message {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 14px;
+}
+
+.account-message.account-error {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+@media (max-width: 700px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .account-save,
+  .account-row {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+  }
+
+  .account-save label {
+    max-width: none;
+  }
+
+  .account-save .primary-button,
+  .account-danger-button {
+    width: 100%;
+  }
+}
+
+/* the sound switch stays on one line */
+.account-card label.settings-toggle {
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+}

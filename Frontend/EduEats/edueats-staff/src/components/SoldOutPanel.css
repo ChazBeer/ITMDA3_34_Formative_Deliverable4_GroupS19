@@ -1,0 +1,229 @@
+/* src/components/SoldOutPanel.css - side panel to mark items sold out */
+
+.soldout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  background: rgba(15, 23, 42, 0.45);
+  font-family: Arial, Helvetica, sans-serif;
+  animation: soldoutFade 0.2s ease;
+}
+
+.soldout-panel {
+  width: min(460px, 100%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f4f7fb;
+  box-shadow: -12px 0 40px rgba(15, 23, 42, 0.25);
+  animation: soldoutSlide 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.soldout-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 20px;
+  background: #173563;
+  color: white;
+}
+
+.soldout-header h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.soldout-header p {
+  margin: 6px 0 0;
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.soldout-close {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.soldout-tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px 6px;
+}
+
+.soldout-tools input[type="search"] {
+  flex: 1;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.soldout-tools label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #334155;
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.soldout-error {
+  margin: 8px 20px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.soldout-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 20px 24px;
+}
+
+.soldout-list h3 {
+  margin: 16px 0 8px;
+  color: #64748b;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.soldout-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: white;
+}
+
+.soldout-row.is-sold-out {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.soldout-row.is-sold-out .soldout-name strong {
+  color: #991b1b;
+}
+
+.soldout-name {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.soldout-name strong {
+  color: #173563;
+  font-size: 14px;
+}
+
+.soldout-name small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+/* On/off switch with its label */
+.soldout-switch {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 118px;
+  height: 34px;
+  padding: 0 12px 0 4px;
+  border: none;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.soldout-switch.on {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.soldout-switch.off {
+  flex-direction: row-reverse;
+  padding: 0 4px 0 12px;
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.soldout-knob {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
+}
+
+.soldout-switch:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.soldout-empty {
+  margin-top: 24px;
+  color: #94a3b8;
+  text-align: center;
+}
+
+@keyframes soldoutFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes soldoutSlide {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .soldout-overlay,
+  .soldout-panel {
+    animation: none;
+  }
+}
+
+/* NEW: stock left */
+.soldout-stock.low {
+  color: #b45309;
+  font-weight: 700;
+}
+
+.soldout-stock.out {
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+/* NEW: "switched on, but 0 left" hint */
+.soldout-note {
+  margin: 0 20px 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fffbeb;
+  color: #92400e;
+  font-size: 13px;
+}

@@ -1,0 +1,197 @@
+/* src/pages/Register/Register.css - matches the staff app sign-in page */
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #173563;
+  padding: 32px 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 540px;
+  background: white;
+  border-radius: 20px;
+  padding: 44px 40px 36px;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+  text-align: left;
+}
+
+/* =========================
+   BRAND ROW ("E" tile)
+   Same as Login.css
+========================= */
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.auth-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #173563;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.auth-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-brand-text strong {
+  font-size: 18px;
+  color: #173563;
+}
+
+.auth-brand-text span {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+.auth-title {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #173563;
+}
+
+.auth-subtitle {
+  margin: 0 0 28px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.name-fields {
+  display: flex;
+  gap: 15px;
+}
+
+.name-fields .form-group {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #1f2937;
+  background: white;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
+}
+
+/* Indigo button, same as "Access Dashboard" */
+.auth-button {
+  width: 100%;
+  height: 48px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background: #4338ca;
+  opacity: 1;
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-switch {
+  margin: 24px 0 0;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.auth-switch a {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .name-fields {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .register-card {
+    padding: 32px 22px 28px;
+  }
+}
+
+/* =========================
+   NEW: errors (same rules as Login.css)
+========================= */
+
+.auth-error {
+  margin: 0 0 18px;
+  padding: 10px 12px;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.field-error {
+  margin: 6px 0 0;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.form-group input.input-error {
+  border-color: #b91c1c;
+}

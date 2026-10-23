@@ -1,0 +1,901 @@
+/* src/pages/Menu/Menu.css - styled to match the staff app */
+
+.menu-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  color: #1f2937;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  padding-bottom: 90px; /* room for the floating cart bar */
+}
+
+/* The top bar and ☰ side menu now live in components/AppHeader.css */
+
+/* =========================
+   PAGE CONTENT
+========================= */
+
+.menu-content {
+  position: relative; /* the green "Open" pill sits in its top-right corner */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 32px 40px;
+}
+
+.welcome-section {
+  margin: 8px 0 20px;
+}
+
+.welcome-section h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  color: #173563;
+}
+
+.welcome-section p {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.menu-content .cart-button {
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 8px;
+  border: 1px solid #4f46e5;
+  background: #4f46e5;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-content .cart-button.secondary {
+  background: white;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+
+.menu-error {
+  padding: 12px 14px;
+  background: #fee2e2;
+  border-radius: 8px;
+  color: #b91c1c;
+}
+
+/* =========================
+   OPEN / CLOSED BANNER
+========================= */
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.status-banner .status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-banner.open {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.status-banner.open .status-dot {
+  animation: pulse 2s infinite;
+}
+
+.status-banner.closed {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-banner.offline {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.status-connected {
+  margin-left: auto;
+  font-weight: normal;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* Green banner sliding away to the right */
+.status-banner.leaving {
+  animation: bannerSlideAway 0.35s ease forwards;
+}
+
+/* Small green "Open" pill at the top right after the banner tucks away
+   (next to "Welcome, ..." - it scrolls away with the page) */
+.status-pill {
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid #a7f3d0;
+  border-radius: 20px;
+  background: #d1fae5;
+  color: #047857;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  cursor: pointer;
+  animation: pillSlideIn 0.3s ease;
+}
+
+.status-pill .status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+.status-pill:hover {
+  background: #bbf7d0;
+}
+
+/* =========================
+   SEARCH, SORT, CATEGORIES
+========================= */
+
+.menu-sticky {
+  position: sticky;
+  top: 64px;
+  z-index: 20;
+  background: #f4f7fb;
+  padding: 10px 0 12px;
+  margin-bottom: 8px;
+}
+
+.menu-toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* CHANGED: bigger search bar */
+.menu-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 16px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  color: #64748b;
+  font-size: 20px;
+}
+
+.menu-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px; /* 16px stops phones from zooming in */
+  color: #1f2937;
+}
+
+.menu-search:focus-within {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
+}
+
+/* CHANGED: compact sort button (icon + current choice; icon only on phones) */
+.menu-sort {
+  position: relative;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  color: #334155;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.menu-sort-icon {
+  font-size: 18px;
+  color: #4f46e5;
+}
+
+/* The real dropdown, invisible but covering the whole button */
+.menu-sort select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px; /* stops phones zooming in */
+}
+
+.menu-sort:focus-within {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px #e0e7ff;
+}
+
+/* A sort other than "Recommended" is chosen */
+.menu-sort.active {
+  border-color: #a5b4fc;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 600;
+}
+
+/* CHANGED: one row that scrolls sideways */
+.category-buttons {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+
+.category-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.category-buttons button {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: white;
+  color: #334155;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.category-buttons button.active {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+}
+
+/* =========================
+   MENU CARDS
+========================= */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.menu-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+  display: flex;
+  flex-direction: column;
+  animation: fadeUp 0.3s ease both;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.menu-card:hover {
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  transform: translateY(-2px);
+}
+
+/* NEW: image / placeholder */
+.menu-card-image {
+  aspect-ratio: 16 / 10;
+  margin: -14px -14px 12px;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  background: #eef2ff;
+}
+
+.menu-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.menu-card-image.placeholder {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #eef2ff, #f1f5f9);
+  font-size: 44px;
+}
+
+.menu-card .category {
+  align-self: flex-start;
+  background: #e0e7ff;
+  color: #4338ca;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.menu-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #173563;
+}
+
+.menu-card p {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.menu-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 12px;
+}
+
+.menu-card-footer strong {
+  font-size: 16px;
+  color: #173563;
+}
+
+.menu-card-footer button {
+  border: 1px solid #4f46e5;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  padding: 9px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.menu-card-footer button.added {
+  background: #047857;
+  border-color: #047857;
+}
+
+.menu-card-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu-card-in-cart {
+  color: #4f46e5;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* NEW: − 2 + on the card once the item is in the cart */
+.card-stepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #4f46e5;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: fadeIn 0.2s ease;
+}
+
+.menu-card-footer .card-stepper button {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.menu-card-footer .card-stepper button:hover:not(:disabled) {
+  background: #e0e7ff;
+}
+
+.card-stepper span {
+  min-width: 34px;
+  text-align: center;
+  color: #173563;
+  font-weight: bold;
+  animation: pop 0.25s ease;
+}
+
+/* NEW: loading placeholders */
+.menu-card.skeleton {
+  pointer-events: none;
+}
+
+.menu-card.skeleton .menu-card-image,
+.skeleton-line {
+  background: linear-gradient(90deg, #eef2f7 25%, #e2e8f0 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  margin: 6px 0;
+  width: 55%;
+}
+
+.skeleton-line.wide {
+  width: 80%;
+}
+
+.menu-empty {
+  margin-top: 20px;
+  color: #64748b;
+}
+
+/* =========================
+   CART
+========================= */
+
+.cart-list {
+  display: grid;
+  gap: 12px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px;
+  animation: fadeUp 0.25s ease both;
+}
+
+.cart-item .menu-card-image {
+  margin: 0;
+  border-radius: 10px;
+  aspect-ratio: 1;
+  font-size: 32px;
+}
+
+.cart-item-info h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  color: #173563;
+}
+
+.cart-item-info p {
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-controls button {
+  min-width: 34px;
+  height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #334155;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.qty-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.qty-controls .remove-button {
+  font-size: 13px;
+  padding: 0 10px;
+  color: #b91c1c;
+}
+
+.cart-item-total {
+  color: #173563;
+  font-size: 16px;
+}
+
+.empty-cart {
+  text-align: center;
+  align-items: center;
+  padding: 32px 20px;
+}
+
+.checkout-box {
+  margin-top: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.checkout-box h2 {
+  margin: 0 0 6px;
+  color: #173563;
+}
+
+.checkout-box p {
+  margin: 0 0 12px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.checkout-closed {
+  padding: 10px;
+  border-radius: 8px;
+  background: #fef3c7;
+  color: #b45309 !important;
+  font-weight: 600;
+}
+
+.checkout-message {
+  color: #b91c1c !important;
+}
+
+.checkout-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Order confirmation */
+.confirmation-card {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  text-align: center;
+  align-items: center;
+}
+
+/* NEW: chosen options and kitchen note under a cart item */
+.cart-item-info .cart-item-options {
+  margin: 0 0 4px;
+  color: #4338ca;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cart-item-note,
+.cart-item-info .cart-item-note {
+  display: block;
+  margin: 0 0 4px;
+  color: #64748b;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.confirmation-item p {
+  margin-bottom: 2px;
+}
+
+.confirmation-item small {
+  display: block;
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.confirmation-items {
+  margin: 12px 0;
+}
+
+.confirmation-items p {
+  margin: 4px 0;
+}
+
+.confirmation-total {
+  margin: 12px 0 6px;
+  color: #173563;
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* =========================
+   FLOATING CART BAR
+========================= */
+
+.floating-cart {
+  /* Centred with left/right/margin instead of a transform, so the
+     "pressed" shrink effect can't push it sideways */
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  z-index: 40;
+  margin: 0 auto;
+  width: min(560px, calc(100% - 32px));
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 14px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
+  animation: slideUpBar 0.3s ease;
+}
+
+.floating-cart-count {
+  min-width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  animation: pop 0.3s ease;
+}
+
+.floating-cart strong {
+  margin-left: auto;
+}
+
+/* Short message at the bottom (e.g. cart limit) */
+.cart-notice {
+  position: fixed;
+  left: 50%;
+  bottom: 84px;
+  transform: translateX(-50%);
+  z-index: 50;
+  margin: 0;
+  padding: 12px 18px;
+  max-width: calc(100% - 32px);
+  background: #173563;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.25);
+  font-size: 14px;
+  animation: fadeIn 0.2s ease;
+}
+
+/* =========================
+   BUTTON PRESS FEEL
+========================= */
+
+.menu-page button:not(:disabled):active {
+  transform: scale(0.97);
+}
+
+.menu-page .floating-cart:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.menu-page button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpBar {
+  from { transform: translateY(120%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@keyframes bannerSlideAway {
+  from { opacity: 1; transform: translateX(0); max-height: 60px; }
+  to { opacity: 0; transform: translateX(60%); max-height: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; }
+}
+
+@keyframes pillSlideIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Animations off when the phone has "reduce motion" on */
+@media (prefers-reduced-motion: reduce) {
+  .menu-page *,
+  .menu-page *::before,
+  .menu-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* =========================
+   PHONES
+========================= */
+
+@media (max-width: 700px) {
+  .menu-content {
+    padding: 12px 14px 30px;
+  }
+
+  .status-pill {
+    top: 18px;
+    right: 14px;
+  }
+
+  /* Leave room on the right of the welcome title for the "Open" pill */
+  .welcome-section h2 {
+    padding-right: 84px;
+  }
+
+  .menu-sticky {
+    top: 64px;
+  }
+
+  /* CHANGED: search and sort share one row, so the bar takes less space */
+  .menu-toolbar {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .menu-search {
+    min-width: 0;
+    height: 48px;
+    padding: 0 12px;
+  }
+
+  .menu-sort {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .menu-sort-label {
+    display: none;
+  }
+
+  /* Small dot on the icon when a sort is chosen */
+  .menu-sort.active::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4f46e5;
+  }
+
+  .menu-sticky {
+    padding: 8px 0 10px;
+  }
+
+  /* Shorter image area so more items fit on a phone screen */
+  .menu-card-image {
+    aspect-ratio: 16 / 7;
+  }
+
+  .menu-card-image.placeholder {
+    font-size: 36px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Bigger − + for thumbs */
+  .menu-card-footer .card-stepper button {
+    width: 42px;
+    height: 40px;
+  }
+
+  .cart-item {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .cart-item-total {
+    grid-column: 2;
+  }
+}
+
+/* ---------- NEW: stock ---------- */
+.menu-card .stock-label {
+  align-self: flex-start;
+  margin: 0 0 10px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.menu-card .stock-low {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.menu-card .stock-out {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.menu-card.sold-out .menu-card-image,
+.menu-card.sold-out h3,
+.menu-card.sold-out > p {
+  opacity: 0.55;
+}
+
+.menu-card.sold-out .add-button:disabled {
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.cart-item-info .cart-item-stock {
+  margin: 4px 0 8px;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+}

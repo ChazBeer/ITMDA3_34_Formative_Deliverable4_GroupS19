@@ -1,0 +1,373 @@
+/* =========================
+   USERS PAGE
+========================= */
+
+.users-page {
+  width: 100%;
+  color: #334155;
+}
+
+.users-page-header {
+  margin-bottom: 24px;
+}
+
+.users-breadcrumb {
+  display: block;
+  font-size: 10px;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.users-page-header h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #173563;
+}
+
+/* =========================
+   TOOLBAR
+========================= */
+
+.users-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.users-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.users-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0 12px;
+  height: 38px;
+  width: 250px;
+}
+
+.users-search span {
+  font-size: 20px;
+  color: #94a3b8;
+}
+
+.users-search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 12px;
+  color: #334155;
+  background: transparent;
+}
+
+.users-filters select {
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #475569;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.users-bulk-button {
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #475569;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.users-bulk-button:hover {
+  background: #f8fafc;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.users-table-container {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.users-table thead {
+  background: #f8fafc;
+}
+
+.users-table th {
+  padding: 15px 16px;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 11px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.users-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.users-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.users-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =========================
+   USER NAME AND AVATAR
+========================= */
+
+.user-name-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.user-name-button strong {
+  font-size: 12px;
+  color: #334155;
+}
+
+.user-name-button:hover strong {
+  color: #4f46e5;
+}
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  display: grid;
+  place-items: center;
+  background: #e0e7ff;
+  color: #3730a3;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+
+.user-status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-active {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.status-suspended {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
+.user-action-button {
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  color: #475569;
+  padding: 6px 9px;
+  margin-right: 5px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.user-action-button:hover {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.users-empty {
+  text-align: center;
+  padding: 40px !important;
+  color: #94a3b8 !important;
+}
+
+/* =========================
+   PAGINATION
+========================= */
+
+.users-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-buttons button {
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #475569;
+  border-radius: 5px;
+  padding: 7px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+.pagination-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-buttons span {
+  color: #64748b;
+}
+
+/* =========================
+   RESPONSIVE TABLE
+========================= */
+
+@media (max-width: 1000px) {
+  .users-table-container {
+    overflow-x: auto;
+  }
+
+  .users-table {
+    min-width: 850px;
+  }
+}
+
+@media (max-width: 700px) {
+  .users-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .users-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .users-search {
+    width: auto;
+  }
+
+  .users-pagination {
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-start;
+  }
+}
+/* =========================
+   NEW: messages, add button, suspend colours
+========================= */
+
+.users-subtitle {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.users-message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 13px;
+}
+
+.users-message-error {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.users-message button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.users-toolbar .users-bulk-button {
+  background: #4f46e5;
+  border-color: #4f46e5;
+  color: white;
+  font-weight: 600;
+}
+
+.users-toolbar .users-bulk-button:hover {
+  background: #4338ca;
+}
+
+.user-action-button.user-action-danger {
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.user-action-button.user-action-ok {
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.user-action-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}

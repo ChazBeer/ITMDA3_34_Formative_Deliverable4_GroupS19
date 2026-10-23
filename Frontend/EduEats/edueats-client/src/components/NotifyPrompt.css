@@ -1,0 +1,38 @@
+/* src/components/NotifyPrompt.css */
+
+.notify-prompt {
+  display: block;
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 12px 16px;
+  border: 1px dashed #818cf8;
+  border-radius: 12px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  animation: notifyPromptIn 0.25s ease-out;
+}
+
+.notify-prompt:hover {
+  background: #e0e7ff;
+}
+
+.notify-prompt-done {
+  margin: 12px 0 0;
+  color: #047857;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@keyframes notifyPromptIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notify-prompt {
+    animation: none;
+  }
+}
